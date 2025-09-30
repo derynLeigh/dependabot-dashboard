@@ -21,7 +21,6 @@ export function Dashboard() {
     setLoading(true);
     setError(null);
     const response = await fetchPRs();
-    console.log('API Response:', response);
     setData(response);
   } catch (err) {
     setError(err instanceof Error ? err.message : 'Failed to load data');
