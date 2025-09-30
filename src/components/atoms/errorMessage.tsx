@@ -10,7 +10,7 @@ export function ErrorMessage({ message, className = '' }: ErrorMessageProps) {
   return (
     <div 
       role="alert" 
-      className={`${baseClasses} ${className}`}
+      className={`${baseClasses} dark:bg-gray-800 ${className}`}
     >
       <svg 
         data-testid="error-icon"

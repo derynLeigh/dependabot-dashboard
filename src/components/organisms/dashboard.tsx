@@ -10,6 +10,7 @@ import { ErrorMessage } from '@/components/atoms/errorMessage';
 import { SummaryStats } from '@/components/molecules/summaryStats';
 import { ErrorList } from '@/components/molecules/errorList';
 import { PRList } from '@/components/organisms/prList';
+import { ThemeToggle } from '@/components/atoms/themeToggle';
 
 export function Dashboard() {
   const [data, setData] = useState<ApiResponse | null>(null);
@@ -63,10 +64,11 @@ export function Dashboard() {
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Dependabot PRs</h1>
+    <div className="container mx-auto p-6 min-h-screen">
+    <div className="flex justify-between items-center mb-6">
+      <h1 className="text-3xl font-bold dark:text-gray-100">Dependabot PRs</h1>
         <div className="flex gap-4">
+          <ThemeToggle />
           <Button onClick={loadData}>Refresh</Button>
           <Button variant="danger" onClick={handleClearCache}>
             Clear Cache
