@@ -21,7 +21,7 @@ export function SummaryStats({ summary }: SummaryStatsProps) {
       <StatCard
         title='Failed Repos'
         value={summary.failedRepos}
-        variant='error'
+        variant={summary.failedRepos > 0 ? 'error' : 'default'}
       />
       <StatCard
         title='Cache Status'
