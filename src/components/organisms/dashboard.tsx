@@ -17,17 +17,17 @@ export function Dashboard() {
   const [error, setError] = useState<string | null>(null);
 
   const loadData = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetchPRs();
-      setData(response);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load data');
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    setError(null);
+    const response = await fetchPRs();
+    setData(response);
+  } catch (err) {
+    setError(err instanceof Error ? err.message : 'Failed to load data');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleClearCache = async () => {
     try {
