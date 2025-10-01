@@ -65,7 +65,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   if (!mounted) {
-    return <>{children}</>;
+    // Provide a default context value during SSR or before hydration
+    return (
+      <ThemeContext.Provider
+        value={{
+          theme: 'system',
+          setTheme: () => {},
+          resolvedTheme: 'light',
+        }}
+      >
+        {children}
+      </ThemeContext.Provider>
+    );
   }
 
   return (
