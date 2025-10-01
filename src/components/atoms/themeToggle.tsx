@@ -6,7 +6,12 @@ export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    // Cycle through 'light' -> 'dark' -> 'system' -> 'light' ...
+    setTheme(prev => {
+      if (prev === 'light') return 'dark';
+      if (prev === 'dark') return 'system';
+      return 'light';
+    });
   };
 
   return (
