@@ -2,8 +2,8 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Dashboard } from '@/components/organisms/dashboard';
 import type { ApiResponse } from '@/types/apiTypes';
+import { ThemeProvider } from '@/components/providers/themeProvider';
 
-// Mock the API calls
 vi.mock('@/lib/api', () => ({
   fetchPRs: vi.fn(),
   clearCache: vi.fn(),
@@ -40,7 +40,10 @@ describe('Dashboard', () => {
     const { fetchPRs } = await import('@/lib/api');
     vi.mocked(fetchPRs).mockImplementation(() => new Promise(() => {})); // Never resolves
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
     expect(screen.getByText(/Loading/i)).toBeInTheDocument();
   });
 
@@ -48,7 +51,10 @@ describe('Dashboard', () => {
     const { fetchPRs } = await import('@/lib/api');
     vi.mocked(fetchPRs).mockResolvedValue(mockApiResponse);
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByText('Dependabot PRs')).toBeInTheDocument();
@@ -61,7 +67,10 @@ describe('Dashboard', () => {
     const { fetchPRs } = await import('@/lib/api');
     vi.mocked(fetchPRs).mockRejectedValue(new Error('API Error'));
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByText(/API Error/i)).toBeInTheDocument();
@@ -72,7 +81,10 @@ describe('Dashboard', () => {
     const { fetchPRs } = await import('@/lib/api');
     vi.mocked(fetchPRs).mockResolvedValue(mockApiResponse);
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /refresh/i })).toBeInTheDocument();
@@ -83,7 +95,10 @@ describe('Dashboard', () => {
     const { fetchPRs } = await import('@/lib/api');
     vi.mocked(fetchPRs).mockResolvedValue(mockApiResponse);
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /clear cache/i })).toBeInTheDocument();
@@ -95,7 +110,10 @@ describe('Dashboard', () => {
     vi.mocked(fetchPRs).mockResolvedValue(mockApiResponse);
     vi.mocked(clearCache).mockResolvedValue();
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /clear cache/i })).toBeInTheDocument();
@@ -114,7 +132,10 @@ describe('Dashboard', () => {
     const { fetchPRs } = await import('@/lib/api');
     vi.mocked(fetchPRs).mockResolvedValue(mockApiResponse);
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByText('Total PRs')).toBeInTheDocument();
@@ -130,7 +151,10 @@ describe('Dashboard', () => {
     };
     vi.mocked(fetchPRs).mockResolvedValue(responseWithErrors);
 
-    render(<Dashboard />);
+    render(
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>);
 
     await waitFor(() => {
       expect(screen.getByText(/Repository Errors/i)).toBeInTheDocument();

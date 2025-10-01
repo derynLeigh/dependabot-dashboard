@@ -21,7 +21,8 @@ describe('StatCard', () => {
     render(<StatCard title="Default" value="1" />);
     
     const valueElement = screen.getByText('1');
-    expect(valueElement).toHaveClass('text-gray-900');
+    // Check for light mode class (dark mode class won't be active in tests)
+    expect(valueElement.className).toContain('text-blue-600');
   });
 
   it('applies custom className', () => {

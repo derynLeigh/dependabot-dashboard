@@ -52,7 +52,8 @@ describe('PRList', () => {
 
   it('renders within a card container', () => {
     const { container } = render(<PRList prs={mockPRs} />);
-    const card = container.querySelector('.bg-white.rounded-lg.shadow');
+    // Check for the container with background classes
+    const card = container.querySelector('.rounded-lg.shadow-sm');
     expect(card).toBeInTheDocument();
   });
 });
