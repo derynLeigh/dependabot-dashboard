@@ -23,7 +23,7 @@ export function PRCard({ pr }: PRCardProps) {
           <p className="text-base text-gray-500 mb-1">
             Repository: {pr.repo}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-300">
+          <p className="text-base text-gray-500 dark:text-gray-300">
             Created: {formatDate(pr.createdAt)}
           </p>
         </div>
