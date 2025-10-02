@@ -10,18 +10,16 @@ export function ErrorList({ errors }: ErrorListProps) {
   }
 
   return (
-    <div className='bg-red-50 border border-red-200 rounded-lg p-6'>
-      <h2 className='text-xl font-semibold text-red-800 mb-4'>
+    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+      <h2 className="text-xl font-semibold text-red-800 dark:text-red-400 mb-4">
         Repository Errors
       </h2>
-      <div className='space-y-3'>
+      <div className="space-y-3">
         {errors.map((error, index) => (
-          <div key={index} className='text-red-700'>
-            <span className='font-semibold'>{error.repo}</span>
-            {error.code && (
-              <span className='text-red-600 ml-2'>({error.code})</span>
-            )}
-            <span className='ml-2'>- {error.error}</span>
+          <div key={index} className="text-red-700 dark:text-red-300">
+            <span className="font-semibold">{error.repo}</span>
+            {error.code && <span className="text-red-600 dark:text-red-400 ml-2">({error.code})</span>}
+            <span className="ml-2">- {error.error}</span>
           </div>
         ))}
       </div>
