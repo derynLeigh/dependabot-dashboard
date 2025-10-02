@@ -7,7 +7,7 @@ type Theme = 'light' | 'dark' | 'system';
 interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  resolvedTheme: 'light' | 'dark';
+  resolvedTheme: 'light' | 'dark' | 'system';
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -65,7 +65,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   if (!mounted) {
-    // Provide a default context value during SSR or before hydration
     return (
       <ThemeContext.Provider
         value={{
